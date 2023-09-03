@@ -7,11 +7,9 @@ class Solution(object):
         :rtype: int
         """
         max_profit = 0
-        p1, p2 = 0, 1
-        while p2 < len(prices):
-            if prices[p1] < prices[p2]:
-                max_profit = max(prices[p2] - prices[p1], max_profit)
-            else:
-                p1 = p2
-            p2 += 1
+        buy_price = prices[0]
+        for price in prices:
+            if price < buy_price:
+                buy_price = price
+            max_profit = max(max_profit, price - buy_price)
         return max_profit

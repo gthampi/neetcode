@@ -7,8 +7,9 @@ class Solution(object):
         """
         if len(s) != len(t):
             return False
-        s, t = sorted(s), sorted(t)
+        count_s, count_t = {}, {}
         for sc, tc in zip(s, t):
-            if sc != tc:
-                return False
-        return True
+            count_s[sc] = count_s.get(sc, 0) + 1
+            count_t[tc] = count_t.get(tc, 0) + 1
+        return count_s == count_t
+
